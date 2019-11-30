@@ -1,7 +1,7 @@
 import os
 from geopy.geocoders import Yandex
 
-geolocator = Yandex(api_key='bb550fcb-9d8a-4373-8c17-70dec05aa431',lang='en_US',timeout=10)
+geolocator = Yandex(api_key='bb550fcb-9d8a-4373-8c17-70dec05aa431',lang='en_US',timeout=None)
 
 def verifyInvalidAttr(text):
     return not text

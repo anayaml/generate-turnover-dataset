@@ -2,6 +2,7 @@ import os
 import csv
 import pandas as pd
 import util
+import time
 
 reviews = open('dataset.csv', 'a', encoding='utf8')
 reviews_writer = csv.writer(reviews, delimiter=',', lineterminator='\n', quoting=csv.QUOTE_NONNUMERIC)
@@ -33,7 +34,7 @@ def verifyJobTitle(job_title):
         return True
 
 def generateDataset():
-    count = 0
+    count = 14164
     for reg in dataframe.itertuples():
         if not verifyReviewText(reg.review_text):
             print('Review removed because contains an invalid review text.')
@@ -44,6 +45,6 @@ def generateDataset():
         else:
             count +=1
             country = util.getCountry(reg.location)
-            reviews_writer.writerow([reg.Index, reg.job_title, reg.employee_status, reg.location, country, reg.review_date, reg.review_text])
+            reviews_writer.writerow([count, reg.job_title, reg.employee_status, reg.location, country, reg.review_date, reg.review_text])
             print(str(count) + '/' + str(len(dataframe)))
 generateDataset()
